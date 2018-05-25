@@ -4,7 +4,7 @@ WORKDIR /srv
 
 ADD ./browser.service /srv
 ADD ./amqp.lib /srv/lib
-ADD ./config /srv
+ADD ./config.js /srv
 
 # See https://crbug.com/795759
 RUN apt-get update && apt-get install -yq libgconf-2-4

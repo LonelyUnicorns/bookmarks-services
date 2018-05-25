@@ -4,7 +4,7 @@ WORKDIR /srv
 
 ADD ./tags.service /srv
 ADD ./amqp.lib /srv/lib
-ADD ./config /srv
+ADD ./config.js /srv
 
 RUN npm install
 
