@@ -2,9 +2,9 @@ FROM node:latest
 
 WORKDIR /srv
 
-ADD ./services/retriever /srv
-ADD ./services/amqp.lib /srv/lib
+ADD ./retriever.service  /srv
+ADD ./amqp.lib /srv/lib
 
-#RUN npm install
+RUN npm install
 
 CMD npm start

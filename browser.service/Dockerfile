@@ -2,8 +2,8 @@ FROM node:latest
 
 WORKDIR /srv
 
-ADD ./services/browser /srv
-ADD ./services/amqp.lib /srv/lib
+ADD ./browser.service /srv
+ADD ./amqp.lib /srv/lib
 
 # See https://crbug.com/795759
 RUN apt-get update && apt-get install -yq libgconf-2-4
