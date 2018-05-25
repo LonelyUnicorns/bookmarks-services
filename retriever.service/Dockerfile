@@ -4,6 +4,7 @@ WORKDIR /srv
 
 ADD ./retriever.service  /srv
 ADD ./amqp.lib /srv/lib
+ADD ./config /srv
 
 RUN npm install
 
