@@ -1,0 +1,9 @@
+
+module.exports = {
+	AMQP: {
+		USER: '',
+		PASSWORD: '',
+		HOST: '',
+		PORT: 5672,
+	},
+};
