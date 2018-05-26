@@ -14,19 +14,25 @@ fi
 
 if ! command_exists nvm ; then
 	wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
-	source .nvm/nvm.sh
+	source $HOME/.nvm/nvm.sh
 	nvm install 10
 	nvm alias default 10
 fi
 
-cd amqp.lib && npm install
-cd ..
+if ! command_exists yarn ; then
+	npm install yarn -g
+fi
+
+if ! file_exists amqp.lib/yarn.lock ; then
+	cd amqp.lib && yarn install
+	cd ..
+fi
 
 if ! file_exists ./config.js ; then
 	mv config.js.example config.js
 fi
 
-docker-compose down
-docker-compose kill
+sudo docker-compose down
+sudo docker-compose kill
 
-#sudo docker-compose up -d --force-recreate --build
+sudo docker-compose up -d --force-recreate --build

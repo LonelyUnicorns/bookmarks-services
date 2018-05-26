@@ -17,7 +17,7 @@ async function browse(url) {
 
 async function process(message) {
 	const data = JSON.parse(message);
-	return await browse(message.content.toString('utf-8'));
+	return await browse(message);
 }
 
 async function run() {
