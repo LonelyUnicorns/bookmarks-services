@@ -2,7 +2,7 @@
 const Service = require('../lib/service.class');
 const puppeteer = require('puppeteer');
 
-async function browse(url) {
+async function browse({ url }) {
 	// Url validation
 	console.log('url', url);
 
