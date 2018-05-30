@@ -1,4 +1,5 @@
 
+const connectDb = require('./db.lib');
 const Service = require('../../service.class');
 
 async function process(message) {

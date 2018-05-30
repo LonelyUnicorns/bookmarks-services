@@ -25,7 +25,7 @@ async function run() {
 
 	const service = new Service();
 	await service.register('addition.push');
-	await service.job('addition.push', 'addition.process', process);
+	await service.job('addition.push', 'addition.html', process);
 
 }
 
