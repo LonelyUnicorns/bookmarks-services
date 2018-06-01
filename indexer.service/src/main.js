@@ -31,7 +31,8 @@ async function process(message) {
 async function run() {
 	const service = new Service();
 	await service.register('addition.indexing');
-	await service.job('addition.indexing', 'addition.content', process);
+	await service.register('addition.dead');
+	await service.job('addition.indexing', 'addition.dead', process);
 
 }
 
