@@ -1,19 +1,17 @@
 #! /bin/sh
 
-
-# https://stackoverflow.com/a/3931779
-command_exists () {
-    type "$1" &> /dev/null ;
+package_installed () {
+	dpkg --get-selections | grep -v deinstall | grep $1
 }
 
 apt-get update
 
-if ! command_exists wget ; then
+if ! package_installed wget ; then
 	apt-get install -y wget --no-install-recommends
 fi
 
-if ! command_exists google-chrome-unstable ; then
-# See https://crbug.com/795759
+if ! package_installed google-chrome-unstable ; then
+	# See https://crbug.com/795759
 	apt-get install -yq libgconf-2-4
 	wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
 	    && sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list' \
