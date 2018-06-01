@@ -17,12 +17,11 @@ async function browse({ url }) {
 
 async function process(message) {
 	const data = JSON.parse(message);
-	return await browse(data);
+	const result = await browse(data);
+	return JSON.stringify({ html: result, ...data });
 }
 
 async function run() {
-	console.info('Running');
-
 	const service = new Service();
 	await service.register('addition.push');
 	await service.job('addition.push', 'addition.html', process);

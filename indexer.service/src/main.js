@@ -25,13 +25,10 @@ async function createIndex({ id }) {
 
 async function process(message) {
 	const data = JSON.parse(message);
-	console.log(data.keywords, data.summary, data.meta, data.title);
-	return {};
+	return JSON.stringify(data);
 }
 
 async function run() {
-	console.info('Running');
-
 	const service = new Service();
 	await service.register('addition.indexing');
 	await service.job('addition.indexing', 'addition.content', process);

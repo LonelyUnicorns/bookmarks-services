@@ -10,9 +10,10 @@ const SUMMARIZER_ALGORITHM = 'nlp/Summarizer/0.1.7';
 
 async function process(message) {
 	const data = JSON.parse(message);
+	const { content } = data;
 	const client = algorithmia(ALGORITHMIA_API_KEY);
-	const keywords = await client.algo(KEYWORDS_ALGORITHM).pipe(data.content);
-	const summary = await client.algo(SUMMARIZER_ALGORITHM).pipe(data.content);
+	const keywords = await client.algo(KEYWORDS_ALGORITHM).pipe(content);
+	const summary = await client.algo(SUMMARIZER_ALGORITHM).pipe(content);
 	return {
 		keywords: keywords.result,
 		summary: summary.result,
@@ -21,8 +22,6 @@ async function process(message) {
 }
 
 async function run() {
-	console.info('Running');
-
 	const service = new Service();
 	await service.register('addition.content');
 	await service.job('addition.content', 'addition.indexing', process);
