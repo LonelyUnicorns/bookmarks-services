@@ -5,7 +5,6 @@ WORKDIR /srv
 ADD ./browser.service /srv
 ADD ./amqp.lib /srv/lib
 ADD ./config.js /srv
-ADD ./install.sh /srv
 
 RUN chmod +x install.sh
 RUN ./install.sh
