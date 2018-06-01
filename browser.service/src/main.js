@@ -18,7 +18,7 @@ async function browse({ url }) {
 async function process(message) {
 	const data = JSON.parse(message);
 	const result = await browse(data);
-	return JSON.stringify({ html: `\"${result}\"`, ...data });
+	return JSON.stringify({ ...data, html: result,  });
 }
 
 async function run() {
