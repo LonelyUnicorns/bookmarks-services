@@ -14,11 +14,11 @@ async function process(message) {
 	const client = algorithmia(ALGORITHMIA_API_KEY);
 	const keywords = await client.algo(KEYWORDS_ALGORITHM).pipe(content);
 	const summary = await client.algo(SUMMARIZER_ALGORITHM).pipe(content);
-	return {
+	return JSON.stringify({
 		keywords: keywords.result,
 		summary: summary.result,
 		...data,
-	};
+	});
 }
 
 async function run() {
